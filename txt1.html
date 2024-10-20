@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>iCoder</title>
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #343a40;
+            color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 50px;
+        }
+
+        nav a {
+            color: white;
+            margin-right: 2rem;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            display: block;
+            background-color: #555;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+
+        .form-check {
+            margin-top: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 1rem;
+            }
+
+            footer p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="navbar-brand">iCoder</div>
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact Us</a>
+    </nav>
+
+    <!-- Contact Form Section -->
+    <div class="container">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Select Your Query</label>
+                <select class="form-control" id="exampleFormControlSelect1" required>
+                    <option value="">Select...</option>
+                    <option value="Web">Web</option>
+                    <option value="Tech Stack">Tech Stack</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Are You a Member?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">Yes</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Are You a Professor?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck2">
+                    <label class="form-check-label" for="gridCheck2">Yes</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Are You a Coder?</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck3">
+                    <label class="form-check-label" for="gridCheck3">Yes</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Elaborate Your Concern</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            <p>© 2023-2024 iCoder, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Form Validation -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent form submission
+
+            const email = document.getElementById('exampleFormControlInput1').value;
+            const queryType = document.getElementById('exampleFormControlSelect1').value;
+            const concern = document.getElementById('exampleFormControlTextarea1').value;
+
+            // Email Validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // Query Type Validation
+            if (queryType === "") {
+                alert('Please select a query type.');
+                return;
+            }
+
+            // Concern Textarea Validation
+            if (concern.trim() === "") {
+                alert('Please elaborate your concern.');
+                return;
+            }
+
+            // If everything is valid
+            alert('Form submitted successfully!');
+        });
+    </script>
+</body>
+
+</html>
